@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaspersky.Retention.Host", "Kaspersky.Retention.Host\Kaspersky.Retention.Host.csproj", "{08E694CB-181A-4F87-ACB3-DD92991A73CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{20FA5F63-5D09-4CA7-9695-76935024186E}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{25DC483C-65CD-4733-8D24-166EDD96C4CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FBF33FC2-7A59-4700-94F6-892F591EA04E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaspersky.Retention.Services", "Kaspersky.Retention.Services\Kaspersky.Retention.Services.csproj", "{878C25C6-F537-4000-AB61-A4AA401BAC53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaspersky.Retention.Models", "Kaspersky.Retention.Models\Kaspersky.Retention.Models.csproj", "{9A2AAAD1-2329-4157-941B-82E9A00D0981}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaspersky.Retention.Services.Tests", "Kaspersky.Retention.Services.Tests\Kaspersky.Retention.Services.Tests.csproj", "{B73FB909-C006-4309-B7DE-40E5BB61F392}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaspersky.Backup.Client", "Kaspersky.Backup.Client\Kaspersky.Backup.Client.csproj", "{5651C160-812E-4E50-8C83-CDA4FA0F3058}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08E694CB-181A-4F87-ACB3-DD92991A73CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E694CB-181A-4F87-ACB3-DD92991A73CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E694CB-181A-4F87-ACB3-DD92991A73CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E694CB-181A-4F87-ACB3-DD92991A73CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878C25C6-F537-4000-AB61-A4AA401BAC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878C25C6-F537-4000-AB61-A4AA401BAC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878C25C6-F537-4000-AB61-A4AA401BAC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878C25C6-F537-4000-AB61-A4AA401BAC53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A2AAAD1-2329-4157-941B-82E9A00D0981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A2AAAD1-2329-4157-941B-82E9A00D0981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A2AAAD1-2329-4157-941B-82E9A00D0981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A2AAAD1-2329-4157-941B-82E9A00D0981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B73FB909-C006-4309-B7DE-40E5BB61F392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B73FB909-C006-4309-B7DE-40E5BB61F392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B73FB909-C006-4309-B7DE-40E5BB61F392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B73FB909-C006-4309-B7DE-40E5BB61F392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5651C160-812E-4E50-8C83-CDA4FA0F3058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5651C160-812E-4E50-8C83-CDA4FA0F3058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5651C160-812E-4E50-8C83-CDA4FA0F3058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5651C160-812E-4E50-8C83-CDA4FA0F3058}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08E694CB-181A-4F87-ACB3-DD92991A73CF} = {25DC483C-65CD-4733-8D24-166EDD96C4CA}
+		{878C25C6-F537-4000-AB61-A4AA401BAC53} = {25DC483C-65CD-4733-8D24-166EDD96C4CA}
+		{9A2AAAD1-2329-4157-941B-82E9A00D0981} = {25DC483C-65CD-4733-8D24-166EDD96C4CA}
+		{B73FB909-C006-4309-B7DE-40E5BB61F392} = {FBF33FC2-7A59-4700-94F6-892F591EA04E}
+		{5651C160-812E-4E50-8C83-CDA4FA0F3058} = {25DC483C-65CD-4733-8D24-166EDD96C4CA}
+	EndGlobalSection
+EndGlobal
