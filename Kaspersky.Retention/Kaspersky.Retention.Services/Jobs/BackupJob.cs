@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Kaspersky.Backup.Client.Contracts;
 using Kaspersky.Backup.Client.Entities;
-using Kaspersky.Retention.Models.Primitives;
-using Kaspersky.Retention.Services.Helpers;
 using Microsoft.Extensions.Logging;
 using SharpJuice.Essentials;
 
@@ -40,44 +36,8 @@ namespace Kaspersky.Retention.Services.Jobs
             catch (Exception e)
             {
                 _logger.LogError(e, "Backup error.");
-                
-                // Пробрасываем исключение наверх для ретраинга Hangfire
                 throw;
             }
-        }
-
-        //TODO: Перенести в сервис политик
-        private void RemoveObsoleteBackups(DateTimeOffset currentDate)
-        {
-            var list = _client.Get();
-
-            var groupedList = list
-                .OrderByDescending(x => x.Created)
-                .GroupBy(x => x.GetGeneration(currentDate));
-
-            var backupsToRemove = new List<Guid>();
-            
-            foreach (var group in groupedList)
-            {
-                switch (group.Key)
-                {
-                    case BackupGeneration.Third:
-                        backupsToRemove.AddRange(group.Skip(1).Select(x => x.Id));
-                        break;
-                    
-                    case BackupGeneration.Second:
-                    case BackupGeneration.First:
-                    case BackupGeneration.Zero:
-                        backupsToRemove.AddRange(group.Skip(4).Select(x => x.Id));
-                        break;
-                    
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-
-            foreach (var id in backupsToRemove)
-                _client.Remove(id);
         }
     }
 }

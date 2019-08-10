@@ -1,7 +1,9 @@
+using System;
+
 namespace Kaspersky.Retention.Models.Configurations
 {
-    public class PolicyServiceConfiguration
+    public sealed class PolicyServiceConfiguration
     {
-        
+        public TimeSpan Interval { get; set; }
     }
 }

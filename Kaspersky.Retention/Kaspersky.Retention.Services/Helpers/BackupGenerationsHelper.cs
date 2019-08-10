@@ -4,7 +4,7 @@ using Kaspersky.Retention.Models.Primitives;
 
 namespace Kaspersky.Retention.Services.Helpers
 {
-    public static class GenerationsHelper
+    public static class BackupGenerationsHelper
     {
         public static BackupGeneration GetGeneration(this BackupRecord record, DateTimeOffset currentDate)
             => GetGeneration(record.Created, currentDate);

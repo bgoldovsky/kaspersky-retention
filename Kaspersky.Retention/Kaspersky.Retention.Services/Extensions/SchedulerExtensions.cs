@@ -19,7 +19,7 @@ namespace Kaspersky.Retention.Services.Extensions
             this IServiceCollection services, 
             IConfiguration configuration)
         { 
-            GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 5 });
+            GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 3 });
             var inMemory = GlobalConfiguration.Configuration.UseMemoryStorage();
             services.AddHangfire(x => x.UseStorage(inMemory));
 

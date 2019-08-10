@@ -17,8 +17,12 @@ namespace Kaspersky.Retention.Host
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddBackupClient();
-            services.AddScheduler(_configuration);
+            services.AddClock();
             services.AddHealthChecks();
+
+            services.AddServices(_configuration);
+            services.AddScheduler(_configuration);
+           
             services.AddMvc();
         }
         

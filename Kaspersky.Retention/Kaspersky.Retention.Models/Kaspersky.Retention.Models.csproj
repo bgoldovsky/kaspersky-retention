@@ -12,8 +12,4 @@
         <WarningsAsErrors />
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Contracts" />
-    </ItemGroup>
-
 </Project>
