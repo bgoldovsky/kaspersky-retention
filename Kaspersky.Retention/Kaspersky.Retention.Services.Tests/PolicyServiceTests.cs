@@ -1,4 +1,4 @@
-namespace Kaspersky.Retention.Services.Tests.Helpers
+namespace Kaspersky.Retention.Services.Tests
 {
     public class PolicyServiceTests
     {

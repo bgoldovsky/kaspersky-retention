@@ -1,7 +1,7 @@
 namespace Kaspersky.Retention.Services.Tests.Fakes
 {
-    public class BackupRecords
+    public static class BackupRecords
     {
-        
+      
     }
 }

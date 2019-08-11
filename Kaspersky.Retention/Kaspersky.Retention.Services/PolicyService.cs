@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Kaspersky.Backup.Client.Contracts;
@@ -41,6 +42,7 @@ namespace Kaspersky.Retention.Services
                 {
                     var retryPolicy = RetryPolicyFactory.Create(); 
                     retryPolicy.Execute(ApplyPoliciesAsync);
+                    _logger.LogInformation("Successfully applied policies to backup store.");
                 }
                 catch (Exception e)
                 {
@@ -54,11 +56,27 @@ namespace Kaspersky.Retention.Services
         private void ApplyPoliciesAsync()
         {
             var backups = _client.Get();
+            if (backups == null || !backups.Any())
+            {
+                _logger.LogWarning("Backups not found.");
+                return;
+            }
+            
             var currentDate = _clock.Now;
             var backupFilter = new BackupFilter(backups, currentDate);
             
-            foreach (var id in backupFilter.GetIdsToRemove())
+            var idsToRemove = backupFilter.GetIdsToRemove();
+            if (!idsToRemove.Any())
+            {
+                _logger.LogDebug($"Backups in actual state");
+                return;
+            }
+
+            foreach (var id in idsToRemove)
+            {
                 _client.Remove(id);
+                _logger.LogDebug($"Backup {id} was removed");
+            }
         }
     }
 }

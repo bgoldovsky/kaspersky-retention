@@ -32,14 +32,14 @@ namespace Kaspersky.Retention.Services
             {
                 switch (generation.Key)
                 {
-                    case BackupGeneration.Third:
-                        result.AddRange(generation.Skip(1).Select(x => x.Id));
+                    case BackupGeneration.Zero:
+                    case BackupGeneration.First:
+                    case BackupGeneration.Second:
+                        result.AddRange(generation.Skip(4).Select(x => x.Id));
                         break;
                     
-                    case BackupGeneration.Second:
-                    case BackupGeneration.First:
-                    case BackupGeneration.Zero:
-                        result.AddRange(generation.Skip(4).Select(x => x.Id));
+                    case BackupGeneration.Third:
+                        result.AddRange(generation.Skip(1).Select(x => x.Id));
                         break;
                     
                     default:
