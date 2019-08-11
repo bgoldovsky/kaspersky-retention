@@ -6,6 +6,6 @@ namespace Kaspersky.Backup.Client.Extensions
     public static class ClientExtensions
     {
         public static IServiceCollection AddBackupClient(this IServiceCollection services)
-            => services.AddTransient<IBackupServiceClient, BackupServiceClient>();
+            => services.AddSingleton<IBackupServiceClient, BackupServiceClient>();
     }
 }

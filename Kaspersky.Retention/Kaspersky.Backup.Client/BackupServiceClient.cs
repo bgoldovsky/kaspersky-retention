@@ -8,30 +8,30 @@ namespace Kaspersky.Backup.Client
 {
     public sealed class BackupServiceClient : IBackupServiceClient
     {
-        private static readonly object LockObject = new object();
-        private static readonly IList<BackupRecord> BackupRecords = new List<BackupRecord>();
+        private readonly object _lockObject = new object();
+        private readonly IList<BackupRecord> _backupRecords = new List<BackupRecord>();
 
         public IReadOnlyCollection<BackupRecord> Get()
         {
-            lock (LockObject)
-                return BackupRecords.ToArray();
+            lock (_lockObject)
+                return _backupRecords.ToArray();
         }
 
         public void Add(BackupRecord backup)
         {
-            lock (LockObject)
-                BackupRecords.Add(backup);
+            lock (_lockObject)
+                _backupRecords.Add(backup);
         }
 
         public void Remove(Guid id)
         {
-            lock (LockObject)
+            lock (_lockObject)
             {
-                var backup = BackupRecords.SingleOrDefault(x => x.Id.Equals(id));
+                var backup = _backupRecords.SingleOrDefault(x => x.Id.Equals(id));
                 if (backup.Equals(default))
                     return;
 
-                BackupRecords.Remove(backup);
+                _backupRecords.Remove(backup);
             }
         }
     }
