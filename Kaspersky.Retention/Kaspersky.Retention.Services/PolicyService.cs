@@ -63,9 +63,9 @@ namespace Kaspersky.Retention.Services
             }
             
             var currentDate = _clock.Now;
-            var backupFilter = new PolicyFilter(backups, currentDate);
+            var politician = new Politician(backups, currentDate);
             
-            var idsToRemove = backupFilter.GetIdsToRemove();
+            var idsToRemove = politician.GetIdsToRemove();
             if (!idsToRemove.Any())
             {
                 _logger.LogDebug($"Backups in actual state");

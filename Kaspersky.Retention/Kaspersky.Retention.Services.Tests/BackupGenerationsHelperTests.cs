@@ -182,8 +182,6 @@ namespace Kaspersky.Retention.Services.Tests
             actual.Should().NotBe(BackupGeneration.Third);
         } 
         
-        
-
         [Theory]
         [InlineData(2019, 8, 10, 22, 00, 1)]
         [InlineData(2019, 8, 12, 0, 0, 0)] 

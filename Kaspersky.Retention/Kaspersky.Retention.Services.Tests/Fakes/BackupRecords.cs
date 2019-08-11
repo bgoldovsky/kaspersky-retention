@@ -62,8 +62,7 @@ namespace Kaspersky.Retention.Services.Tests.Fakes
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd29"), 
                     new DateTimeOffset(2019, 8, 5, 8, 0,0, TimeSpan.Zero)),
-                
-                
+
                 // 1st gen skipped
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd30"), 
@@ -80,8 +79,7 @@ namespace Kaspersky.Retention.Services.Tests.Fakes
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd33"), 
                     new DateTimeOffset(2019, 8, 3, 8, 0,0, TimeSpan.Zero)),
-                
-                
+
                 // 2ng gen
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd34"), 
@@ -99,6 +97,7 @@ namespace Kaspersky.Retention.Services.Tests.Fakes
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd37"), 
                     new DateTimeOffset(2019, 8, 1, 8, 0,0, TimeSpan.Zero)),
                 
+                // 2nd gen skipped
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd38"), 
                     new DateTimeOffset(2019, 7, 31, 20, 0,0, TimeSpan.Zero)),
@@ -108,43 +107,45 @@ namespace Kaspersky.Retention.Services.Tests.Fakes
                     new DateTimeOffset(2019, 7, 31, 8, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd24"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd40"), 
                     new DateTimeOffset(2019, 7, 30, 20, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd40"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd41"), 
                     new DateTimeOffset(2019, 7, 30, 8, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd41"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd42"), 
                     new DateTimeOffset(2019, 7, 29, 20, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd42"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd43"), 
                     new DateTimeOffset(2019, 7, 29, 8, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd43"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd44"), 
                     new DateTimeOffset(2019, 7, 28, 20, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd44"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd45"), 
                     new DateTimeOffset(2019, 7, 28, 8, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd45"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd46"), 
                     new DateTimeOffset(2019, 7, 27, 20, 0,0, TimeSpan.Zero)),
                 
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd46"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd47"), 
                     new DateTimeOffset(2019, 7, 27, 8, 0,0, TimeSpan.Zero)),
                 
-                new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd47"), 
-                    new DateTimeOffset(2019, 7, 26, 20, 0,0, TimeSpan.Zero)),
-                
+                // 3ng gen
                 new BackupRecord(
                     new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd48"), 
+                    new DateTimeOffset(2019, 7, 26, 20, 0,0, TimeSpan.Zero)),
+               
+                // 3ng gen skipped
+                new BackupRecord(
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd49"), 
                     new DateTimeOffset(2019, 7, 26, 8, 0,0, TimeSpan.Zero)),
             };
         
@@ -204,9 +205,8 @@ namespace Kaspersky.Retention.Services.Tests.Fakes
 
                 // 3rd gen
                 new BackupRecord(
-                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd47"), 
+                    new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd48"), 
                     new DateTimeOffset(2019, 7, 26, 20, 0,0, TimeSpan.Zero))
-
             };
     }
 }
