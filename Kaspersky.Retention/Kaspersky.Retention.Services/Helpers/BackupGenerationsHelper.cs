@@ -11,21 +11,24 @@ namespace Kaspersky.Retention.Services.Helpers
         
         public static BackupGeneration GetGeneration(DateTimeOffset createdDate, DateTimeOffset currentDate)
         {
-            var elapsedDays = (currentDate - createdDate).TotalDays;
+            var elapsed = currentDate - createdDate;
             
-            if (elapsedDays >= 0 && elapsedDays <= 3)
+            if (elapsed.TotalMilliseconds < 0)
+                throw new InvalidOperationException("Elapsed can't be negative.");
+
+            if (elapsed.Days >= 0 && elapsed.Days <= 3)
                 return BackupGeneration.Zero;
             
-            if (elapsedDays > 3 && elapsedDays <= 7)
+            if (elapsed.Days >= 4 && elapsed.Days <= 7)
                 return BackupGeneration.First;
             
-            if (elapsedDays > 7 && elapsedDays <= 14)
+            if (elapsed.Days >= 8 && elapsed.Days <= 14)
                 return BackupGeneration.Second;
             
-            if (elapsedDays > 14)
+            if (elapsed.Days > 14)
                 return BackupGeneration.Third;
             
-            throw new InvalidOperationException($"Elapsed days {elapsedDays} out of range.");
+            throw new InvalidOperationException($"Elapsed days {elapsed.Days} out of range.");
         }
     }
 }

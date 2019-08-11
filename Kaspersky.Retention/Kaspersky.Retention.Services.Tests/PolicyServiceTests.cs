@@ -1,6 +1,6 @@
 namespace Kaspersky.Retention.Services.Tests
 {
-    public class PolicyServiceTests
+    public sealed class PolicyServiceTests
     {
         
     }

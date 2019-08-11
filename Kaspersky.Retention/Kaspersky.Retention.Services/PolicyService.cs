@@ -63,7 +63,7 @@ namespace Kaspersky.Retention.Services
             }
             
             var currentDate = _clock.Now;
-            var backupFilter = new BackupFilter(backups, currentDate);
+            var backupFilter = new PolicyFilter(backups, currentDate);
             
             var idsToRemove = backupFilter.GetIdsToRemove();
             if (!idsToRemove.Any())

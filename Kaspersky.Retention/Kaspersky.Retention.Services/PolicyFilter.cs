@@ -7,12 +7,12 @@ using Kaspersky.Retention.Services.Helpers;
 
 namespace Kaspersky.Retention.Services
 {
-    public class BackupFilter
+    public class PolicyFilter
     {
         private readonly IReadOnlyCollection<BackupRecord> _backups;
         private readonly DateTimeOffset _currentDate;
 
-        public BackupFilter(
+        public PolicyFilter(
             IReadOnlyCollection<BackupRecord> backups,
             DateTimeOffset currentDate)
         {
