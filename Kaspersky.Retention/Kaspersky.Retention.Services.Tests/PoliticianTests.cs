@@ -11,6 +11,21 @@ namespace Kaspersky.Retention.Services.Tests
         [Fact]
         public void Politician_NothingToRemove()
         {
+            var politician = new Politician(BackupRecords.NothingToRemove, BackupRecords.CurrentDate);
+
+            var idsToRemove = politician.GetIdsToRemove();
+            var actualIds = BackupRecords.NothingToRemove
+                .Select(x => x.Id)
+                .Except(idsToRemove)
+                .ToArray();
+
+            idsToRemove.Should().HaveCount(0);
+            actualIds.Should().HaveCount(10);
+        }
+        
+        [Fact]
+        public void Politician_PrepareToBackup()
+        {
             var politician = new Politician(BackupRecords.ActualBackups, BackupRecords.CurrentDate);
 
             var idsToRemove = politician.GetIdsToRemove();
@@ -19,10 +34,71 @@ namespace Kaspersky.Retention.Services.Tests
                 .Except(idsToRemove)
                 .ToArray();
 
-            idsToRemove.Should().HaveCount(0);
-            actualIds.Should().HaveCount(13);
+            idsToRemove.Should().HaveCount(3);
+            actualIds.Should().HaveCount(10);
+        }
+        
+        [Fact]
+        public void Politician_PrepareToBackup_ActualCheck()
+        {
+            var politician = new Politician(BackupRecords.ActualBackups, BackupRecords.CurrentDate);
+
+            var idsToRemove = politician.GetIdsToRemove();
+            var actualIds = BackupRecords.ActualBackups
+                .Select(x => x.Id)
+                .Except(idsToRemove)
+                .ToArray();
+            
+            var expected = new[]
+            {
+                // 0 gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd18"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd20"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd21"),
+                
+                // 1st gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd26"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd28"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd29"),
+                
+                // 2nd gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd34"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd36"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd37"),
+                
+                // 3th gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd48")
+            };
+
+            actualIds.Should().BeEquivalentTo(expected);
+        }
+        
+        [Fact]
+        public void Politician_PrepareToBackup_RemovedCheck()
+        {
+            var politician = new Politician(BackupRecords.ActualBackups, BackupRecords.CurrentDate);
+
+            var idsToRemove = politician.GetIdsToRemove();
+
+            var expected = new[]
+            {
+                // 0 gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd19"),
+                
+                // 1st gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd27"),
+                
+                // 2nd gen
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd35"),
+            };
+
+            idsToRemove.Should().BeEquivalentTo(expected);
         }
 
+        
+        
+        
+        
         [Fact]
         public void Politician_ObsoleteRemoved()
         {
@@ -34,8 +110,8 @@ namespace Kaspersky.Retention.Services.Tests
                 .Except(idsToRemove)
                 .ToArray();
 
-            idsToRemove.Should().HaveCount(19);
-            actualIds.Should().HaveCount(13);
+            idsToRemove.Should().HaveCount(22);
+            actualIds.Should().HaveCount(10);
         }
 
         [Fact]
@@ -53,21 +129,18 @@ namespace Kaspersky.Retention.Services.Tests
             {
                 // 0 gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd18"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd19"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd20"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd21"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd24"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd25"),
                 
                 // 1st gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd26"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd27"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd28"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd29"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd32"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd33"),
                 
                 // 2nd gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd34"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd35"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd36"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd37"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd46"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd47"),
                 
                 // 3th gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd48")
@@ -85,14 +158,21 @@ namespace Kaspersky.Retention.Services.Tests
        
             var expected = new[]
             {
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd19"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd20"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd21"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd22"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd23"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd24"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd25"),
+        
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd27"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd28"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd29"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd30"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd31"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd32"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd33"),
+                
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd35"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd36"),
+                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd37"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd38"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd39"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd40"),
@@ -101,8 +181,7 @@ namespace Kaspersky.Retention.Services.Tests
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd43"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd44"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd45"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd46"),
-                new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd47"),
+                
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd49")
             };
 

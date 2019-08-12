@@ -19,10 +19,7 @@ namespace Kaspersky.Retention.Host
             services.AddBackupClient();
             services.AddClock();
             services.AddHealthChecks();
-
-            services.AddServices(_configuration);
             services.AddScheduler(_configuration);
-           
             services.AddMvc();
         }
         

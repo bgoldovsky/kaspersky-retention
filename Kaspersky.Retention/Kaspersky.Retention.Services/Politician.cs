@@ -35,7 +35,12 @@ namespace Kaspersky.Retention.Services
                     case BackupGeneration.Zero:
                     case BackupGeneration.First:
                     case BackupGeneration.Second:
-                        result.AddRange(generation.Skip(4).Select(x => x.Id));
+                        if (generation.Count() >= 4)
+                        {
+                            result.AddRange(generation
+                                .Skip(1).SkipLast(2)
+                                .Select(x => x.Id));
+                        }
                         break;
                     
                     case BackupGeneration.Third:
