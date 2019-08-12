@@ -1,7 +1,7 @@
 using System;
 using FluentAssertions;
 using Kaspersky.Retention.Models.Primitives;
-using Kaspersky.Retention.Services.Helpers;
+using Kaspersky.Retention.Services.Extensions;
 using Xunit;
 
 namespace Kaspersky.Retention.Services.Tests
@@ -23,7 +23,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Zero);
         } 
@@ -35,7 +35,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Zero);
         }  
@@ -47,7 +47,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
          
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().NotBe(BackupGeneration.Zero);
         }  
@@ -65,7 +65,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.First);
         }
@@ -77,7 +77,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.First);
         }  
@@ -89,7 +89,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().NotBe(BackupGeneration.First);
         }  
@@ -113,7 +113,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Second);
         } 
@@ -125,7 +125,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Second);
         }  
@@ -137,7 +137,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().NotBe(BackupGeneration.Second);
         } 
@@ -153,7 +153,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Third);
         } 
@@ -165,7 +165,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().Be(BackupGeneration.Third);
         } 
@@ -177,7 +177,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
 
-            var actual = BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            var actual = BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             actual.Should().NotBe(BackupGeneration.Third);
         } 
@@ -191,7 +191,7 @@ namespace Kaspersky.Retention.Services.Tests
         {
             var createdDate = new DateTimeOffset(year, month, day, hour, minute, second, TimeSpan.Zero);
             
-            Func<BackupGeneration> act = () => BackupGenerationsHelper.GetGeneration(createdDate, _currentDate);
+            Func<BackupGeneration> act = () => BackupGenerationsExtensions.GetGeneration(createdDate, _currentDate);
 
             act.Should().Throw<InvalidOperationException>().WithMessage("Elapsed can't be negative.");
         }

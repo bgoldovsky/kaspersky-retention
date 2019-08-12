@@ -1,5 +1,5 @@
 ﻿using Kaspersky.Backup.Client.Extensions;
-using Kaspersky.Retention.Services.Extensions;
+using Kaspersky.Retention.Services.Extensions.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

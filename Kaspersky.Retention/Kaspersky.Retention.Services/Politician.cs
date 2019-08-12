@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Kaspersky.Backup.Client.Entities;
 using Kaspersky.Retention.Models.Primitives;
-using Kaspersky.Retention.Services.Helpers;
+using Kaspersky.Retention.Services.Extensions;
 
 namespace Kaspersky.Retention.Services
 {

@@ -2,9 +2,9 @@ using System;
 using Kaspersky.Backup.Client.Entities;
 using Kaspersky.Retention.Models.Primitives;
 
-namespace Kaspersky.Retention.Services.Helpers
+namespace Kaspersky.Retention.Services.Extensions
 {
-    public static class BackupGenerationsHelper
+    public static class BackupGenerationsExtensions
     {
         public static BackupGeneration GetGeneration(this BackupRecord record, DateTimeOffset currentDate)
             => GetGeneration(record.Created, currentDate);

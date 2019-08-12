@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Kaspersky.Retention.Services.Extensions
+namespace Kaspersky.Retention.Services.Extensions.Infrastructure
 {
     /*
         В production-коде вместо in-memory используем Hangfire с СУБД 

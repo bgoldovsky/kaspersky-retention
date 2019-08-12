@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SharpJuice.Essentials;
 
-namespace Kaspersky.Retention.Services.Extensions
+namespace Kaspersky.Retention.Services.Extensions.Infrastructure
 {
     public static class ClockExtensions
     {

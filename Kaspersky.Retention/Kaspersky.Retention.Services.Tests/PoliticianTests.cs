@@ -51,18 +51,25 @@ namespace Kaspersky.Retention.Services.Tests
 
             var expected = new[]
             {
+                // 0 gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd18"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd19"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd20"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd21"),
+                
+                // 1st gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd26"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd27"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd28"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd29"),
+                
+                // 2nd gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd34"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd35"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd36"),
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd37"),
+                
+                // 3th gen
                 new Guid("53afa98d-c280-4ee3-8228-79dcd4c3dd48")
             };
             

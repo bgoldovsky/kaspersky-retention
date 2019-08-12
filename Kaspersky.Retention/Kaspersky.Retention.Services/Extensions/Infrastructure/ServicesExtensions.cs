@@ -2,7 +2,7 @@ using Kaspersky.Retention.Models.Configurations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Kaspersky.Retention.Services.Extensions
+namespace Kaspersky.Retention.Services.Extensions.Infrastructure
 {
     public static class ServicesExtensions
     {
